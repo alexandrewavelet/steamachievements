@@ -22,6 +22,15 @@
 		{
 			$answer_jeux = $jeux['message'];
 		}
+		$profil = $manager->get_profile_from_username(htmlentities($_POST['username']));
+		if ($profil['code'])
+		{
+			$answer_profil = $profil['message'];
+		}
+		else
+		{
+			$answer_profil = $profil['message'];
+		}
 	}
 
 ?>
@@ -46,6 +55,15 @@
 	
 	if (isset($id)) {
 		echo '<p>'.$answer.'</p>';
+	}
+
+?>
+
+<h3>profil</h3>
+<?php
+	
+	if (isset($id)) {
+		echo '<p>'.$answer_profil.'</p>';
 	}
 
 ?>
