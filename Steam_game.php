@@ -9,15 +9,17 @@
 		protected $appid;
 		protected $name;
 		protected $playtime_forever;
-		protected $playtime_2weeks;
+		protected $playtime_2weeks = 0;
 		protected $img_icon_url;
 		protected $img_logo_url;
 		protected $has_community_visible_stats;
 
 
-		function __construct()
+		function __construct($array_infos)
 		{
-			
+			foreach ($array_infos as $key => $value) {
+				$this->$key = $value;
+			}
 		}
 	
 		/**

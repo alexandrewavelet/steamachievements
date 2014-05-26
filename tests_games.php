@@ -1,6 +1,7 @@
 <?php
 
 	include('Manager_api.php');
+	include('Steam_game.php');
 
 	$manager = new Manager_api();
 
@@ -10,18 +11,20 @@
 
 	$games_list = $games_array->response->games;
 
+	$games_objects = array();
+
 	foreach ($games_list as $game) {
 		$game_array = get_object_vars($game);
-		foreach ($game_array as $key => $value) {
-			echo $key.' => '.$value.'<br>';
-		}
-		echo '<hr>';
+		array_push($games_objects, new Steam_game($game_array));
 	}
 
-	echo '<hr>';
-
-	echo '<h1>Game count</h1>';
-
-	var_dump($games_array->response->game_count);
+	echo '<table>';
+		foreach ($games_objects as $game) {
+			echo '<tr>';
+				echo '<td><img src="http://media.steampowered.com/steamcommunity/public/images/apps/'.$game->getAppid().'/'.$game->getImg_logo_url().'.jpg" alt="'.$game->getName().'"></td>';
+				echo '<td>'.$game->getName().'</td>';
+			echo '</tr>';
+		}
+	echo '<table>';
 
 ?>

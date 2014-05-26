@@ -38,7 +38,7 @@
 			{
 				$requete = 'http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/';
 				$requete = $requete.'?key='.$this->steamkey.
-							'&steamid='.$steamid['message'].'&format=json'.'&include_appinfo=1';
+							'&steamid='.$steamid['message'].'&format=json&include_appinfo=1';
 				$resultat_request = $this->get_curl($requete);
 				if (!$resultat_request['code'])
 				{
