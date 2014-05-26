@@ -16,7 +16,7 @@
 		{
 			$request = 'http://steamcommunity.com/id/'.$username.'/?xml=1';
 
-			$resultat_request = $this->getCURL($request);
+			$resultat_request = $this->get_curl($request);
 			if (!$resultat_request['code'])
 			{
 				$reponse = array('code' => 0, 'message' => 'Erreur : '.$resultat_request['message']);
@@ -24,6 +24,8 @@
 			else 
 			{
 				preg_match("#<steamID64>[0-9]+#",$resultat_request['message'],$match);
+				preg_match("#>[0-9]+#",$match[0],$match);
+				preg_match("#[0-9]+#",$match[0],$match);
 				$reponse = array('code' => 1, 'message' => $match[0]);
 			}
 			return $reponse;
@@ -35,8 +37,8 @@
 			if ($steamid['code'])
 			{
 				$requete = 'http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/';
-				$requete = $requete.'?key='.$steamkey.
-							'&steamid='.$steamid.'&format=json';
+				$requete = $requete.'?key='.$this->steamkey.
+							'&steamid='.$steamid['message'].'&format=json';
 				$resultat_request = $this->get_curl($requete);
 				if (!$resultat_request['code'])
 				{

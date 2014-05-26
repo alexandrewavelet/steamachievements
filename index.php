@@ -13,6 +13,15 @@
 		{
 			$answer = $id['message'];
 		}
+		$jeux = $manager->get_owned_games_from_username(htmlentities($_POST['username']));
+		if ($jeux['code'])
+		{
+			$answer_jeux = $_POST['username'].' : '.$jeux['message'];
+		}
+		else
+		{
+			$answer_jeux = $jeux['message'];
+		}
 	}
 
 ?>
@@ -27,6 +36,12 @@
 
 <h2>Username</h2>
 
+<form action="index.php" method="POST">
+	<label for="username">Username</label><input type="text" name="username" id="username" placeholder="Username" required>
+	<input type="submit" name="submit" value="Valider">
+</form>
+
+<h3>steamid</h3>
 <?php
 	
 	if (isset($id)) {
@@ -35,7 +50,11 @@
 
 ?>
 
-<form action="index.php" method="POST">
-	<label for="username">Username</label><input type="text" name="username" id="username" placeholder="Username" required>
-	<input type="submit" name="submit" value="Valider">
-</form>
+<h3>jeux</h3>
+<?php
+	
+	if (isset($id)) {
+		echo '<p>'.$answer_jeux.'</p>';
+	}
+
+?>
