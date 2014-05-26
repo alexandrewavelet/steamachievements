@@ -31,6 +31,7 @@ else
 	echo "<pre>";
 	print_r($liste_param_steam);
 	echo "</pre>";
+
 }
 
 curl_close($ch);
