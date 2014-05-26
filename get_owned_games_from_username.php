@@ -7,9 +7,11 @@ function get_owned_games_from_username($username)
 	$steamkey= '69E4634F40383769D291FC9BF5F1C5FE';
 	$steamid = get_steamid_from_username($username);
 	// TODO : get steam id from multiple usernames !
-	$requete = 'http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/';
+/*	$requete = 'http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/';
 	$requete = $requete.'?key='.$steamkey.
-				'&steamid='.$steamid.'&format=json';			
+				'&steamid='.$steamid.'&format=json';*/	
+
+	$requete ='http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=69E4634F40383769D291FC9BF5F1C5FE&steamid=76561198120359242&format=json';		
 
 	$ch = curl_init($requete);
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);

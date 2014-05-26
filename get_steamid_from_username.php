@@ -21,6 +21,4 @@ function get_steamid_from_username($username)
 	return $reponse;
 }
 
-var_dump(get_steamid_from_username("arnitri"));
-
 ?>
