@@ -10,16 +10,17 @@ function get_steamid_from_username($username)
 	if (!$resultat_request)
 	{
 		echo "<p>Erreur</p><p>".curl_error($ch)."</p>";
-		return -1;
+		$reponse = -1;
 	}
 	else 
 	{
 		preg_match("#<steamID64>[0-9]+#",$resultat_request,$match);
-		return $match[0];
+		$reponse = $match[0];
 	}
 	curl_close($ch);
+	return $reponse;
 }
 
-get_steamid_from_username("arnitri");
+var_dump(get_steamid_from_username("arnitri"));
 
 ?>
