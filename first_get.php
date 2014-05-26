@@ -18,7 +18,6 @@ if (!$resultat_request)
 else 
 {
 	$liste_parametres = explode("&",$resultat_request);
-	$counter = 0;
 	foreach($liste_parametres as $param_steam)
 	{
 		$list_param_steam=json_decode($param_steam);
@@ -28,18 +27,6 @@ else
 				$liste_param_steam=$player;
 			};
 		} 
-//		list($name,$valeur) = explode("=",$param_steam);
-//		$liste_param_steam[$name]=urldecode($valeur);
-/*		foreach($response as $list_players) 
-		{
-			foreach($list_players as $players) 
-			{
-				list($name,$valeur) = explode(":",$players);
-				$liste_param_players[$name]=urldecode($valeur);
-			}
-			$liste_param_steam[$players]=$liste_param_players;
-		}
-*/		
 	}
 	echo "<pre>";
 	print_r($liste_param_steam);
