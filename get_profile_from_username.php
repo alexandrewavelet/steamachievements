@@ -7,7 +7,7 @@ function get_profile_from_username($username)
 	$steamkey= '69E4634F40383769D291FC9BF5F1C5FE';
 	$steamid = get_steamid_from_username($username);
 	// TODO : get steam id from multiple usernames !
-	$requete =  'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/';
+	$requete = 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0001/';
 	$requete = $requete.'?key='.$steamkey.
 				'&steamids='.$steamid;			
 

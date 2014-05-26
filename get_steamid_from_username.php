@@ -15,6 +15,8 @@ function get_steamid_from_username($username)
 	else 
 	{
 		preg_match("#<steamID64>[0-9]+#",$resultat_request,$match);
+		preg_match("#>[0-9]+#",$match[0],$match);
+		preg_match("#[0-9]+#",$match[0],$match);
 		$reponse = $match[0];
 	}
 	curl_close($ch);
