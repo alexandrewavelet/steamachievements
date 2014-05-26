@@ -39,6 +39,4 @@ function get_profile_from_username($username)
 	return $liste_param_steam;
 }
 
-var_dump(get_profile_from_username("shunki"));
-
 ?>

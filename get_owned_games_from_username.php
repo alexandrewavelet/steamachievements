@@ -26,6 +26,4 @@ function get_owned_games_from_username($username)
 	return $liste_parametres;
 }
 
-var_dump(get_owned_games_from_username("arnitri"));
-
 ?>
