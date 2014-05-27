@@ -88,7 +88,7 @@
 			if ($steamid['code']) {
 				// TODO : get steam id from multiple usernames !
 				$requete =  'http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/';
-				$requete = $requete.'?appid='.$appid.'&key='.$this->steamkey.'&steamid='.$steamid['message'];			
+				$requete = $requete.'?appid='.$appid.'&key='.$this->steamkey.'&steamid='.$steamid['message'].'&l=english';			
 				$resultat_request = $this->get_curl($requete);
 				if (!$resultat_request)
 				{
