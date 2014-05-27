@@ -1,5 +1,5 @@
 <?php
-
+include('Steam_profile.php');
 	/**
 	* Manager Steam API
 	*/
@@ -78,7 +78,8 @@
 			{
 				$reponse = array('code' => 0, 'message' => 'Erreur : '.$steamid['message']);
 			}
-			return $reponse;
+			$steam_profile_user = new Steam_profile($reponse);
+			return $steam_profile_user;
 
 		}
 

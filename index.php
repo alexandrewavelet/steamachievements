@@ -23,16 +23,8 @@
 			$answer_jeux = $jeux['message'];
 		}
 		$profil = $manager->get_profile_from_username(htmlentities($_POST['username']));
-		if ($profil['code'])
-		{
-			$answer_profil = $profil['message'];
-		}
-		else
-		{
-			$answer_profil = $profil['message'];
-		}
 		$achievement_portal = $manager->get_achievement_from_username_and_gameid(htmlentities($_POST['username']),620);
-		if ($profil['code'])
+		if ($achievement_portal['code'])
 		{
 			$achievement_portal = $achievement_portal['message'];
 		}
@@ -41,7 +33,7 @@
 			$achievement_portal = $achievement_portal['message'];
 		}
 		$completion_portal = $manager->get_achievement_percentage_for_game(620);
-		if ($profil['code'])
+		if ($completion_portal['code'])
 		{
 			$completion_portal = $completion_portal['message'];
 		}
@@ -52,15 +44,6 @@
 	}
 
 ?>
-
-<h1>index</h1>
-
-<ul>
-	<li><a href="get_profile_from_username.php">get profile from username</a></li>
-	<li><a href="get_steamid_from_username.php">get steamid from username</a></li>
-	<li><a href="get_owned_games_from_username.php">get owned games from username</a></li>
-	<li><a href="tests_games.php">tests formatage jeux</a></li>
-</ul>
 
 <h2>Username</h2>
 
@@ -82,7 +65,12 @@
 <?php
 	
 	if (isset($id)) {
-		echo '<p>'.$answer_profil.'</p>';
+		echo '<p>';
+		echo '<strong> Username</strong> : '.$profil->getPersonaname().'<br>';
+		echo '<strong> steam ID</strong> : '.$profil->getSteamid().'<br>';
+		$profile_url=$profil->getProfileUrl();
+		echo '<a href='.$profile_url.'>Steam page</a><br>';
+		echo '</p>';
 	}
 
 ?>
