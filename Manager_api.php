@@ -1,4 +1,7 @@
 <?php
+	
+	include('Steam_games_list.php');
+	include('Steam_game.php');
 
 	/**
 	* Manager Steam API
@@ -37,8 +40,7 @@
 			if ($steamid['code'])
 			{
 				$requete = 'http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/';
-				$requete = $requete.'?key='.$this->steamkey.
-							'&steamid='.$steamid['message'].'&format=json&include_appinfo=1';
+				$requete = $requete.'?key='.$this->steamkey.'&steamid='.$steamid['message'].'&format=json&include_appinfo=1';
 				$resultat_request = $this->get_curl($requete);
 				if (!$resultat_request['code'])
 				{
@@ -46,7 +48,8 @@
 				}
 				else 
 				{
-					$reponse = array('code' => 1, 'message' => $resultat_request['message']);
+					$games_list = $this->get_games_list_from_json($resultat_request['message']);
+					$reponse = array('code' => 1, 'message' => $games_list);
 				}
 			}
 			else
@@ -54,6 +57,18 @@
 				$reponse = array('code' => 0, 'message' => 'Erreur : '.$steamid['message']);
 			}
 			return $reponse;
+		}
+
+		public function get_games_list_from_json($json)
+		{
+			$games_array = json_decode($json);
+			$games_list = $games_array->response->games;
+			$list = new Steam_games_list(array());
+			foreach ($games_list as $game) {
+				$game_array = get_object_vars($game);
+				$list->add_game(new Steam_game($game_array));
+			}
+			return $list;
 		}
 
 		// à faire
@@ -140,6 +155,8 @@
 			curl_close($ch);
 			return $reponse;
 		}
+
+
 
 	}
 

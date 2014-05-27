@@ -91,6 +91,14 @@
 		{
 			return $this->has_community_visible_stats;
 		}
+
+		// functions
+
+		public function get_logo()
+		{
+			$url = 'http://media.steampowered.com/steamcommunity/public/images/apps/'.$this->appid.'/'.$this->img_logo_url.'.jpg';
+			return $url;
+		}
 }
 
 ?>
