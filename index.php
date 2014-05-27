@@ -1,46 +1,24 @@
 <?php
 
+	include('Manager_api.php');
+	$manager = new Manager_api();
+
 	if (isset($_POST['submit']))
 	{
-		include('Manager_api.php');
-		$manager = new Manager_api();
+
 		$id = $manager->get_steamid_from_username(htmlentities($_POST['username']));
-		if ($id['code'])
-		{
-			$answer = $_POST['username'].' : '.$id['message'];
-		}
-		else
-		{
-			$answer = $id['message'];
-		}
+		$answer = $id['message'];
+
 		$jeux = $manager->get_owned_games_from_username(htmlentities($_POST['username']));
-		if ($jeux['code'])
-		{
-			$answer_jeux = $_POST['username'].' : '.$jeux['message'];
-		}
-		else
-		{
-			$answer_jeux = $jeux['message'];
-		}
+		$answer_jeux = $jeux['message'];
+
 		$profil = $manager->get_profile_from_username(htmlentities($_POST['username']));
+
 		$achievement_portal = $manager->get_achievement_from_username_and_gameid(htmlentities($_POST['username']),620);
-		if ($achievement_portal['code'])
-		{
-			$achievement_portal = $achievement_portal['message'];
-		}
-		else
-		{
-			$achievement_portal = $achievement_portal['message'];
-		}
+		$achievement_portal = $achievement_portal['message'];
+
 		$completion_portal = $manager->get_achievement_percentage_for_game(620);
-		if ($completion_portal['code'])
-		{
-			$completion_portal = $completion_portal['message'];
-		}
-		else
-		{
-			$completion_portal = $completion_portal['message'];
-		}
+		$completion_portal = $completion_portal['message'];
 	}
 
 ?>
@@ -77,9 +55,16 @@
 
 <h3>jeux</h3>
 <?php
-	
-	if (isset($id)) {
-		echo '<p>'.$answer_jeux.'</p>';
+
+	if (isset($answer_jeux)) {
+		echo '<table>';
+			foreach ($answer_jeux as $game) {
+				echo '<tr>';
+					echo '<td><img src="'.$game->get_logo().'" alt="'.$game->getName().'"></td>';
+					echo '<td>'.$game->getName().'</td>';
+				echo '</tr>';
+			}
+		echo '</table>';
 	}
 
 ?>
