@@ -31,6 +31,24 @@
 		{
 			$answer_profil = $profil['message'];
 		}
+		$achievement_portal = $manager->get_achievement_from_username_and_gameid(htmlentities($_POST['username']),620);
+		if ($profil['code'])
+		{
+			$achievement_portal = $achievement_portal['message'];
+		}
+		else
+		{
+			$achievement_portal = $achievement_portal['message'];
+		}
+		$completion_portal = $manager->get_achievement_percentage_for_game(620);
+		if ($profil['code'])
+		{
+			$completion_portal = $completion_portal['message'];
+		}
+		else
+		{
+			$completion_portal = $completion_portal['message'];
+		}
 	}
 
 ?>
@@ -74,6 +92,24 @@
 	
 	if (isset($id)) {
 		echo '<p>'.$answer_jeux.'</p>';
+	}
+
+?>
+
+<h3>Achievement Portal 2</h3>
+<?php
+	
+	if (isset($id)) {
+		echo '<p>'.$achievement_portal.'</p>';
+	}
+
+?>
+
+<h3>Completion percentage Portal 2</h3>
+<?php
+	
+	if (isset($id)) {
+		echo '<p>'.$completion_portal.'</p>';
 	}
 
 ?>

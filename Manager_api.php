@@ -82,6 +82,47 @@
 
 		}
 
+		public function get_achievement_from_username_and_gameid($username,$appid)
+		{
+			$steamid = $this->get_steamid_from_username($username);
+			if ($steamid['code']) {
+				// TODO : get steam id from multiple usernames !
+				$requete =  'http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/';
+				$requete = $requete.'?appid='.$appid.'&key='.$this->steamkey.'&steamid='.$steamid['message'];			
+				$resultat_request = $this->get_curl($requete);
+				if (!$resultat_request)
+				{
+					$reponse = array('code' => 0, 'message' => 'Erreur : '.$resultat_request['message']);					
+				}
+				else 
+				{
+					$reponse = array('code' => 1, 'message' => $resultat_request['message']);
+				}
+			}
+			else
+			{
+				$reponse = array('code' => 0, 'message' => 'Erreur : '.$steamid['message']);
+			}
+			return $reponse;
+		}
+
+		public function get_achievement_percentage_for_game($appid)
+		{
+			// TODO : get steam id from multiple usernames !
+			$requete =  'http://api.steampowered.com/ISteamUserStats/GetGlobalAchievementPercentagesForApp/v0002/';
+			$requete = $requete.'?gameid='.$appid.'&format=json';			
+			$resultat_request = $this->get_curl($requete);
+			if (!$resultat_request)
+			{
+				$reponse = array('code' => 0, 'message' => 'Erreur : '.$resultat_request['message']);					
+			}
+			else 
+			{
+				$reponse = array('code' => 1, 'message' => $resultat_request['message']);
+			}
+			return $reponse;
+		}
+
 		public function get_curl($request)
 		{
 			$ch = curl_init($request);
