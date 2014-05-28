@@ -94,6 +94,12 @@
 
 		// functions
 
+		public function has_logo()
+		{
+			$value = (isset($this->img_logo_url) && $this->img_logo_url != '') ? true : false ;
+			return $value;
+		}
+
 		public function get_logo()
 		{
 			$url = 'http://media.steampowered.com/steamcommunity/public/images/apps/'.$this->appid.'/'.$this->img_logo_url.'.jpg';

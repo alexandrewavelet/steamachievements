@@ -1,6 +1,8 @@
 <?php
 
-	include('Manager_api.php');
+	session_start();
+
+	include('models/Manager_api.php');
 	$manager = new Manager_api();
 
 	if (isset($_POST['submit']))
@@ -20,6 +22,8 @@
 		$completion_portal = $manager->get_achievement_percentage_for_game(620);
 		$completion_portal = $completion_portal['message'];
 	}
+
+	include('snippets/header.php');
 
 ?>
 
@@ -61,7 +65,13 @@
 		echo '<table>';
 			foreach ($answer_jeux as $game) {
 				echo '<tr>';
-					echo '<td><img src="'.$game->get_logo().'" alt="'.$game->getName().'"></td>';
+					echo '<td>';
+						if ($game->has_logo()) {
+							echo '<img src="'.$game->get_logo().'" alt="'.$game->getName().'">';
+						}else{
+							echo '<img src="assets/img/game_logo_default.jpg" alt="'.$game->getName().'">';
+						}
+					echo '</td>';
 					echo '<td>'.$game->getName().'</td>';
 				echo '</tr>';
 			}
@@ -85,5 +95,11 @@
 	if (isset($id)) {
 		echo '<p>'.$completion_portal.'</p>';
 	}
+
+?>
+
+<?php
+
+	include('snippets/footer.php');
 
 ?>

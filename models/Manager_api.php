@@ -1,8 +1,8 @@
 <?php
 
-	include('Steam_profile.php');
-	include('Steam_games_list.php');
-	include('Steam_game.php');
+	include('models/steam_classes/Steam_profile.php');
+	include('models/steam_classes/Steam_games_list.php');
+	include('models/steam_classes/Steam_game.php');
 
 	/**
 	* Manager Steam API
