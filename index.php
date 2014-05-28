@@ -2,6 +2,13 @@
 
 	session_start();
 
+	function __autoload($class)
+	{
+		static $classDir = '/models';
+		$file = str_replace('\\', DIRECTORY_SEPARATOR, ltrim($class, '\\')) . '.php';
+		require "$classDir/$file";
+	}
+
 	include('models/Manager_api.php');
 	$manager = new Manager_api();
 
@@ -87,6 +94,7 @@
 ?>
 
 <h3>Achievement Portal 2</h3>
+
 <?php
 	
 	if (isset($id)) {
