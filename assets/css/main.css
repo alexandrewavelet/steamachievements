@@ -1,5 +1,17 @@
 .cadre_tentative{
-				border: 2px solid #0066FF ;
-				border-radius: 5px;
-				background-color:#BFBFBF;
-				}
+	border: 2px solid #0066FF ;
+	border-radius: 5px;
+	background-color:#BFBFBF;
+	padding: 5px;
+}
+
+.cadre_tentative img{
+	margin: 5px;
+}
+
+.cadre_tentative strong{
+	display: inline-block;
+	width: 80px;
+	margin-right: 5px;
+	text-align: right;
+}
