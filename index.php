@@ -23,11 +23,6 @@
 
 		$profil = $manager->get_profile_from_username(htmlentities($_POST['username']));
 
-		$achievement_portal = $manager->get_achievement_from_username_and_gameid(htmlentities($_POST['username']),620);
-		$achievement_portal = $achievement_portal['message'];
-
-		$completion_portal = $manager->get_achievement_percentage_for_game(620);
-		$completion_portal = $completion_portal['message'];
 	}
 
 	include('snippets/header.php');
@@ -57,12 +52,22 @@
 		echo '<div class="row">';
  			echo '<div class="col-md-4 col-md-offset-2">';
  				echo '<div class="cadre_tentative">';
- 					echo '<img class="pull-left" src="'.$profil->getAvatar().'">';
- 						echo '<ul class="list-unstyled">';
-							echo '<li><strong>Username : </strong>'.$profil->getPersonaname().'</li>';
-							echo '<li><strong>steam ID : </strong>'.$profil->getSteamid().'</li>';
-						echo '</ul>';
-					echo '<a href='.$profil->getProfileUrl().'>Steam page</a><br>';
+ 					echo '<div class="row">';
+ 						echo '<div class="col-md-2">';
+	 						echo '<a href='.$profil->getProfileUrl().'><img src="'.$profil->getAvatar().'"></a>';
+	 					echo '</div>';
+ 						echo '<div class="col-md-10">';
+	 						echo '<ul class="list-unstyled">';
+								echo '<li><strong>Username : </strong>'.$profil->getPersonaname().'</li>';
+								echo '<li><strong>steam ID : </strong>'.$profil->getSteamid().'</li>';
+								echo '<li><strong>steam ID : </strong>'.$profil->getSteamid().'</li>';
+								echo '<li><strong>steam ID : </strong>'.$profil->getSteamid().'</li>';
+								echo '<li><strong>steam ID : </strong>'.$profil->getSteamid().'</li>';
+								echo '<li><strong>steam ID : </strong>'.$profil->getSteamid().'</li>';
+								echo '<li><strong>steam ID : </strong>'.$profil->getSteamid().'</li>';
+							echo '</ul>';
+						echo '</div>';
+					echo '</div>';
 				echo '</div>';
 			echo '</div>';
 		echo '</div>';
@@ -88,25 +93,6 @@
 				echo '</tr>';
 			}
 		echo '</table>';
-	}
-
-?>
-
-<h3>Achievement Portal 2</h3>
-
-<?php
-	
-	if (isset($id)) {
-		echo '<p>'.$achievement_portal.'</p>';
-	}
-
-?>
-
-<h3>Completion percentage Portal 2</h3>
-<?php
-	
-	if (isset($id)) {
-		echo '<p>'.$completion_portal.'</p>';
 	}
 
 ?>

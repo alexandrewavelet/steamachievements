@@ -1,5 +1,5 @@
 .cadre_tentative{
-	border: 2px solid #0066FF ;
+	border: 2px solid #111111 ;
 	border-radius: 5px;
 	background-color:#BFBFBF;
 	padding: 5px;
@@ -15,3 +15,5 @@
 	margin-right: 5px;
 	text-align: right;
 }
+
+.cadre_tentative ul li{clear: none}

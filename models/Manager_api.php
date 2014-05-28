@@ -41,7 +41,7 @@
 			if ($steamid['code'])
 			{
 				$requete = 'http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/';
-				$requete = $requete.'?key='.$this->steamkey.'&steamid='.$steamid['message'].'&format=json&include_appinfo=1';
+				$requete = $requete.'?key='.$this->steamkey.'&steamid='.$steamid['message'].'&format=json&include_appinfo=1&include_played_free_games=1';
 				$resultat_request = $this->get_curl($requete);
 				if (!$resultat_request['code'])
 				{
