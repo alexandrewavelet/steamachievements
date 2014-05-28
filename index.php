@@ -48,6 +48,7 @@
 		echo '<strong> steam ID</strong> : '.$profil->getSteamid().'<br>';
 		$profile_url=$profil->getProfileUrl();
 		echo '<a href='.$profile_url.'>Steam page</a><br>';
+		echo '<img src="'.$profil->getAvatar().'"> <br>';
 		echo '</p>';
 	}
 
