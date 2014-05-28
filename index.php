@@ -47,13 +47,19 @@
 <?php
 	
 	if (isset($id)) {
-		echo '<p>';
-		echo '<strong> Username</strong> : '.$profil->getPersonaname().'<br>';
-		echo '<strong> steam ID</strong> : '.$profil->getSteamid().'<br>';
-		$profile_url=$profil->getProfileUrl();
-		echo '<a href='.$profile_url.'>Steam page</a><br>';
-		echo '<img src="'.$profil->getAvatar().'"> <br>';
-		echo '</p>';
+		echo '<div class="row">';
+ 			echo '<div class="col-md-4 col-md-offset-2">';
+ 				echo '<div class="cadre_tentative">';
+				echo '<img class="pull-left" src="'.$profil->getAvatar().'">';
+					echo '<dl class="dl-horizontal">';
+						echo '<dt> Username </dt><dd> '.$profil->getPersonaname().'</dd>';
+						echo '<dt> steam ID </dt><dd> '.$profil->getSteamid().'</dd>';
+						$profile_url=$profil->getProfileUrl();
+					echo '</dl>';
+				echo '<a href='.$profile_url.'>Steam page</a><br>';
+				echo '</div>';
+			echo '</div>';
+		echo '</div>';
 	}
 
 ?>
