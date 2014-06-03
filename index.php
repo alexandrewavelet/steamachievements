@@ -79,20 +79,14 @@
 <?php
 
 	if (isset($answer_jeux)) {
-		echo '<table>';
+		echo '<div class="row">';
 			foreach ($answer_jeux as $game) {
-				echo '<tr>';
-					echo '<td>';
-						if ($game->has_logo()) {
-							echo '<img src="'.$game->get_logo().'" alt="'.$game->getName().'">';
-						}else{
-							echo '<img src="assets/img/game_logo_default.jpg" alt="'.$game->getName().'">';
-						}
-					echo '</td>';
-					echo '<td>'.$game->getName().'</td>';
-				echo '</tr>';
+				echo '<div class="col-md-3">';
+					$logo = ($game->has_logo()) ? $game->get_logo() : 'assets/img/game_logo_default.jpg' ;
+					echo '<img src="'.$logo.'" alt="'.$game->getName().'" width="100%" height="auto">';
+				echo '</div>';
 			}
-		echo '</table>';
+		echo '</div>';
 	}
 
 ?>

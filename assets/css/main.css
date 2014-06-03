@@ -16,4 +16,18 @@
 	text-align: right;
 }
 
-.cadre_tentative ul li{clear: none}
+.cadre_tentative ul li{
+	clear: none
+}
+
+span.img{
+	display: none;
+}
+
+td:hover span.img{
+	display: inline-block;
+}
+
+.col-md-3{
+	margin : 5px 0;
+}
